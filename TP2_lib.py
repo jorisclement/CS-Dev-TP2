@@ -15,11 +15,34 @@ def afficher(mot):
         if mot[i] == mot[0]:
             motFinal += mot[i]
         else:
-            motFinal += " _ "
+            motFinal += "-"
     return motFinal
 
 
-mot= randomWord()
-print (mot)
-print(afficher(mot))
+
+def jouer(essai,mot,motFinal):
+    a=list(motFinal)
+    while essai != 8:
+
+        lettre = input("saisir votre lettre : ")
+        for i in range (len(mot)-1) :
+            if mot[i]==lettre:
+                a[i] = lettre
+                motFinal="".join(a)
+                
+                print(a)
+            else:
+                a[i]="-"
+               
+        if lettre not in mot:
+            essai += 1
+            print( "il n'y a pas votre lettre dans le mot, il ne vous reste plus que ",8-essai,"chance")
+    return motFinal
+
+        
+
+    
+
+
+
 
