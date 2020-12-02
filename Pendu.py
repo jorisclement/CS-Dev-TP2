@@ -21,6 +21,7 @@ from TP2_lib import randomWord,afficher,jouer
 
 essai = 0
 mot = randomWord()
+
 motFinal=(afficher(mot))
 print (motFinal)
 print(jouer(essai,mot,motFinal))
