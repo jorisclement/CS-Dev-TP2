@@ -24,3 +24,4 @@ mot = randomWord()
 motFinal=(afficher(mot))
 print (motFinal)
 print(jouer(essai,mot,motFinal))
+
