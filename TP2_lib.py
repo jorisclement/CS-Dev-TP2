@@ -1,6 +1,7 @@
 
 #@Copyright: Joris CLEMENT
 import random
+from tkinter import Tk, Label, Button, Entry,PhotoImage,Canvas
 
 # la fonction randomWord permet de retouner un mot d'au moins 5 lettres provenant mesMots.txt.
 
@@ -8,7 +9,7 @@ def randomWord():
     fich = open("mesMots.txt","r")
     a=fich.readlines()
     mot = random.choice(a)
-    while (len(mot)-1) < 5:
+    while (len(mot)-1) < 5:     #permet de prendre les mot de 5 lettres ou plus
         mot = random.choice(a)
     fich.close()
     return mot
@@ -19,10 +20,10 @@ def afficher(mot):
     mot=mot.lower()
     motFinal=''
     lettre1=0
-    for i in range (len(mot)-1):
+    for i in range (len(mot)-1): #création du mot maqué
         if mot[i] == mot[0]:
             motFinal += mot[i]
-            lettre1+=1
+            lettre1+=1              #variable permettant de trouver le nombre de fois que la 1er lettre apparait (utile plus tard pour la consition de victoire)
             
                 
         else:
@@ -35,17 +36,18 @@ def afficher(mot):
 
 # la fonction jouer propose a l'utilisateur de saisir des lettres pour tenter de trouver le mot
 #l'utilisateur a le droit a 8 chances
-def jouer(essai,mot,motFinal,lettre1):
+def jouer(mot,motFinal,lettre1):
     LmotFinal=list(motFinal)
     win=0
-    while essai != 8 and (len(mot)-1)-lettre1 != win :
-        print(win,len(mot)-1,lettre1,(len(mot)-1)-lettre1,essai)
+    essai=0
+    while essai != 8 and (len(mot)-1)-lettre1 != win : #condition sur l'arret du jeu, avec condition de victoire/condition de défaite
+                                                        #lorque que le joueur à consommé ses 8 chances (en se trompant) et lorsque qu'il a trouvé suffisament de lettre dans le mot pour le découvrir totalement 
 
         lettre = input("saisir votre lettre : ")
         for i in range (len(mot)-1) :
             if mot[i]==lettre:
                 LmotFinal[i] = lettre
-                win+=1       
+                win+=1                              #variable permettant de contabiliser les succés du joueur, utile pour la condition de victoire
         print("".join(LmotFinal))
         
                
@@ -57,13 +59,14 @@ def jouer(essai,mot,motFinal,lettre1):
         
 
     
-
+#cette fonction permet d'afficher au joueur si il gagné ou perdu en lui retournant le mot
 def winLose(mot,LmotFinal,essai,win,lettre1):
-    print(win,len(mot),lettre1)
+
     
     if win == ((len(mot)-1)-lettre1):
         return "vous avez gagné"
     elif essai == 8: 
         return "vous avez perdu, le mot était "+mot
+
 
 
