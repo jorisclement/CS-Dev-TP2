@@ -1,7 +1,7 @@
 
 #@Copyright: Joris CLEMENT
 import random
-from tkinter import Tk, Label, Button, Entry,PhotoImage,Canvas
+
 
 # la fonction randomWord permet de retouner un mot d'au moins 5 lettres provenant mesMots.txt.
 
@@ -36,14 +36,14 @@ def afficher(mot):
 
 # la fonction jouer propose a l'utilisateur de saisir des lettres pour tenter de trouver le mot
 #l'utilisateur a le droit a 8 chances
-def jouer(mot,motFinal,lettre1):
+def jouer(lettre,mot,motFinal,lettre1):
     LmotFinal=list(motFinal)
     win=0
     essai=0
     while essai != 8 and (len(mot)-1)-lettre1 != win : #condition sur l'arret du jeu, avec condition de victoire/condition de défaite
                                                         #lorque que le joueur à consommé ses 8 chances (en se trompant) et lorsque qu'il a trouvé suffisament de lettre dans le mot pour le découvrir totalement 
-
-        lettre = input("saisir votre lettre : ")
+        lettre = input ("veuillez saisor votre lettre")
+        
         for i in range (len(mot)-1) :
             if mot[i]==lettre:
                 LmotFinal[i] = lettre
@@ -68,6 +68,27 @@ def winLose(mot,LmotFinal,essai,win,lettre1):
     elif essai == 8: 
         return "vous avez perdu, le mot était "+mot
 
+# la fonction jouer propose a l'utilisateur de saisir des lettres pour tenter de trouver le mot dans l'interface graphique
+#l'utilisateur a le droit a 8 chances
+def jouerAffichage(lettre,mot,motFinal,lettre1):
+    LmotFinal=list(motFinal)
+    win=0
+    essai=0
+    while essai != 8 and (len(mot)-1)-lettre1 != win : #condition sur l'arret du jeu, avec condition de victoire/condition de défaite
+                                                        #lorque que le joueur à consommé ses 8 chances (en se trompant) et lorsque qu'il a trouvé suffisament de lettre dans le mot pour le découvrir totalement 
 
+        
+        for i in range (len(mot)-1) :
+            if mot[i]==lettre:
+                LmotFinal[i] = lettre
+                win+=1                              #variable permettant de contabiliser les succés du joueur, utile pour la condition de victoire
+        print("".join(LmotFinal)
+        
+               
+        if lettre not in mot:
+            essai += 1
+            print( "il n'y a pas votre lettre dans le mot, il ne vous reste plus que ",8-essai,"chances")
+    return LmotFinal,essai,win
 
+    
 

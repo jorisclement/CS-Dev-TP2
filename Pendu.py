@@ -14,11 +14,10 @@ TODO changer le noms des variables et fonction pour tout mettre en anglais.
 
 #Importation des bibliothéques
 import random
-from tkinter import Tk, Label, Button
 
 #Fonction nécessaires au programme
 
-from TP2_lib import randomWord,afficher,jouer,winLose
+from TP2_lib import randomWord,afficher,jouer,winLose,jouerAffichage
 
 
 
@@ -26,10 +25,12 @@ from TP2_lib import randomWord,afficher,jouer,winLose
 
 
 
-
+#création du mot alléatoire
 mot = randomWord()
-print(mot)
+#cration du mot cripté et du nombre de fois qu'apparait la 1er lettre
 motFinal=(afficher(mot))
 print (motFinal[0])
-jouer=jouer(mot,motFinal[0],motFinal[1])
+#permet au joueur je saisir les lettres
+jouer=jouerAffichage(mot,motFinal[0],motFinal[1])
 print(winLose(mot,jouer[0],jouer[1],jouer[2],motFinal[1]))
+
