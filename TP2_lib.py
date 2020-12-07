@@ -39,7 +39,7 @@ def jouer(essai,mot,motFinal,lettre1):
     LmotFinal=list(motFinal)
     win=0
     while essai != 8 and (len(mot)-1)-lettre1 != win :
-        print(win,len(mot)-1,lettre1,(len(mot)-1)-lettre1,essai)
+       
 
         lettre = input("saisir votre lettre : ")
         for i in range (len(mot)-1) :
